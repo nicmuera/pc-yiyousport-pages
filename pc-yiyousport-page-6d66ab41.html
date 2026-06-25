@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+  <title>易游体育 · 温和指南</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: linear-gradient(145deg, #fbe9d7 0%, #f5d7c4 60%, #edd0b9 100%);
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      line-height: 1.6;
+      color: #3d2c20;
+    }
+
+    .card {
+      max-width: 820px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(2px);
+      border-radius: 42px 18px 42px 18px;
+      box-shadow: 0 16px 40px rgba(140, 80, 40, 0.18), 0 6px 12px rgba(0, 0, 0, 0.04);
+      padding: 2.8rem 2.5rem;
+      transition: all 0.2s ease;
+    }
+
+    @media (max-width: 540px) {
+      body { padding: 1.2rem 1rem; }
+      .card { padding: 2rem 1.4rem; border-radius: 32px 12px 32px 12px; }
+    }
+
+    /* 头部横幅 — 杂志式引言 */
+    .hero {
+      border-left: 6px solid #d78f6e;
+      padding-left: 1.4rem;
+      margin-bottom: 2.6rem;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 450;
+      letter-spacing: 1px;
+      color: #543d2b;
+      line-height: 1.2;
+    }
+
+    .hero .sub {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 1rem;
+      color: #7b604b;
+      font-weight: 350;
+      letter-spacing: 0.4px;
+      opacity: 0.85;
+    }
+
+    /* 背景说明区 — 像编者按 */
+    .context-note {
+      background: #f5ede6;
+      border-radius: 30px 8px 30px 8px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 2.8rem;
+      font-size: 0.98rem;
+      color: #403026;
+      box-shadow: 0 2px 6px rgba(160, 100, 55, 0.06);
+    }
+
+    .context-note strong {
+      color: #a76743;
+      font-weight: 500;
+    }
+
+    /* 三段自然介绍 — 卡片式段落 */
+    .story-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-bottom: 2.6rem;
+    }
+
+    .story-item {
+      background: #fcf8f4;
+      padding: 1.6rem 1.8rem;
+      border-radius: 24px 8px 24px 8px;
+      border: 1px solid #ecdccc;
+      transition: box-shadow 0.15s;
+    }
+
+    .story-item:hover {
+      box-shadow: 0 8px 14px rgba(130, 75, 35, 0.06);
+    }
+
+    .story-item h3 {
+      font-size: 1.24rem;
+      font-weight: 430;
+      color: #5a412f;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .story-item h3::before {
+      content: "·";
+      color: #c98966;
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin-right: 0.2rem;
+    }
+
+    .story-item p {
+      font-size: 0.97rem;
+      color: #4a382c;
+      margin: 0;
+    }
+
+    /* 提醒／提示 — 像是杂志小贴士 */
+    .reminder-box {
+      background: #dccbbc33;
+      border: 1px dashed #b69179;
+      border-radius: 50px 12px 50px 12px;
+      padding: 1.3rem 2rem;
+      margin: 2rem 0 1.8rem 0;
+      font-size: 0.95rem;
+      color: #4d3729;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.2rem 0.6rem;
+    }
+
+    .reminder-box span.label {
+      font-weight: 480;
+      color: #8f5e3f;
+      background: #f3e3d7;
+      padding: 0.1rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* 页尾访问提示 — 自然嵌入链接 */
+    .footer-visit {
+      border-top: 1px solid #e3d1c3;
+      padding-top: 1.8rem;
+      margin-top: 0.4rem;
+      text-align: left;
+      font-size: 1rem;
+      color: #4b382b;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.3rem 0.6rem;
+    }
+
+    .footer-visit a {
+      background: #cfa882;
+      color: #1f140e;
+      text-decoration: none;
+      padding: 0.2rem 1.2rem 0.3rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 450;
+      font-size: 1rem;
+      display: inline-block;
+      border: 1px solid #b28c72;
+      transition: background 0.2s, transform 0.1s;
+      letter-spacing: 0.4px;
+      box-shadow: 0 2px 6px rgba(150, 90, 45, 0.08);
+      line-height: 1.5;
+    }
+
+    .footer-visit a:hover {
+      background: #dbb99b;
+      border-color: #a77b5e;
+      transform: scale(1.02);
+    }
+
+    .footer-visit .meta {
+      color: #715a49;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e7d6ca;
+      margin: 1.2rem 0;
+    }
+
+    /* 辅助间距 */
+    .soft-spacer {
+      height: 0.6rem;
+    }
+
+    /* 小字点缀 */
+    .note-light {
+      color: #7e6655;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+<div class="card">
+
+  <!-- 首页横幅 -->
+  <div class="hero">
+    <h1>易游体育<sub class="sub">一份关于节奏与陪伴的简明指南</sub></h1>
+  </div>
+
+  <!-- 背景说明 — 为何做这个专题 -->
+  <div class="context-note">
+    <strong>编者按</strong>  ——  运动与日常，本应像一次轻快的散步。我们整理了一些平实的观察和提醒，不夸大、不催促，只希望你在寻找运动方向时，有一份安静且实用的参考。<br>
+    这份专题从“如何开始、怎样持续、何时放松”三个角度展开，没有门槛，也无需准备。
+  </div>
+
+  <!-- 三段自然介绍 -->
+  <div class="story-section">
+
+    <div class="story-item">
+      <h3>从一次舒展开始</h3>
+      <p>不需要专业装备，也不要求固定场地。一个垫子、一段空闲，甚至只是工作间隙的五分钟。<strong>易游体育</strong> 的思路是让运动回归“身体想动”的本能。你可以从简单的拉伸或原地踏步开始，不必追求时长或强度，只要感到舒适，就是对的节奏。</p>
+    </div>
+
+    <div class="story-item">
+      <h3>让运动成为一种呼吸</h3>
+      <p>很多人把运动看作任务，但更温和的方式是把它融入生活缝隙——听播客时走一走，等水烧开时做几个深蹲。平台 <a href="https://pc-yiyousport.com" style="background:transparent; padding:0; border:none; color:#9f6d4f; font-weight:500; text-decoration:underline;">易游体育</a> 提供许多轻量级的内容线索，就像一位不唠叨的朋友，默默陪你找到自己的频率。</p>
+    </div>
+
+    <div class="story-item">
+      <h3>倾听身体的信号</h3>
+      <p>比起“坚持”，更珍贵的可能是“暂停”。累了就歇，不舒服就调整。所有好习惯都应该让人感到安稳而非压力。当你需要一点新鲜灵感或安静陪伴时，回头看看那些平实的引导——它们一直在那里。</p>
+    </div>
+
+  </div>
+
+  <!-- 访问提醒 + FAQ摘要风格 -->
+  <div class="reminder-box">
+    <span class="label">温 馨 提 醒</span>
+    <span>任何活动前请依据个人情况量力而行；</span>
+    <span>运动前后注意补充水分，倾听身体感受。</span>
+    <span style="flex-basis:100%; height:0.3rem;"></span>
+    <span class="note-light">❝ 最舒适的频率，往往来自不着急的尝试。 ❞</span>
+  </div>
+
+  <!-- 页尾访问提示 — 自然语境，无诱导词 -->
+  <div class="footer-visit">
+    <span>更多平实的内容与陪伴，都在</span>
+    <a href="https://pc-yiyousport.com">易游体育</a>
+    <span class="meta">—— 一份安静的参考</span>
+  </div>
+
+  <!-- 很小的分隔及版本说明（仅作装饰） -->
+  <hr>
+  <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; font-size:0.75rem; color:#9c8778; opacity:0.5;">
+    <span>杂志专题 · 温和指南</span>
+    <span>内容方向 · 简明与陪伴</span>
+  </div>
+
+</div>
+</body>
+</html>
